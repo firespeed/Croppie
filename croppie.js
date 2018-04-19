@@ -613,7 +613,11 @@
         zoomer.style.display = self.options.showZoomer ? '' : 'none';
         zoomer.setAttribute('aria-label', 'zoom');
 
-        self.element.appendChild(wrap);
+        if (typeof self.options.zoomWrap !== null)
+            document.getElementById(self.options.zoomWrap).appendChild(wrap);
+        else
+            self.element.appendChild(wrap);
+
         wrap.appendChild(zoomer);
 
         self._currentZoom = 1;
